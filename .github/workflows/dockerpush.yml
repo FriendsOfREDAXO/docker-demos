@@ -1,0 +1,20 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        demo: [community]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Image ${{ matrix.demo }}
+        run: |
+            docker build ./${{ matrix.demo }}/ -t ${{matrix.demo}}
