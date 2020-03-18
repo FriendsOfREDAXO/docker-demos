@@ -32,7 +32,7 @@ declare -A packageNames=(
     [community]='demo_community'
 )
 declare -A packageVersions=(
-    [community]='3.1.0'
+    [community]='3.1.1'
 )
 # -----------------------------------------------------------------------------
 
