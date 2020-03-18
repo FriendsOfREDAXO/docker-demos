@@ -72,15 +72,13 @@ else
 
     echo >&2 "👉 Start REDAXO DEMO setup..."
 
-    curl -Ls -o demo.zip https://github.com/FriendsOfREDAXO/demo_community/archive/master.zip; \
-    unzip -oq demo.zip -d /tmp/demo_community; \
-    mv /tmp/demo_community/demo_community-master ./redaxo/src/addons/demo_community; \
-    rm demo.zip; \
+    php redaxo/bin/console install:download -q %%PACKAGE%% %%VERSION%%
+    php redaxo/bin/console package:install -q %%PACKAGE%%
+    php redaxo/bin/console cache:clear -q
+    php redaxo/bin/console %%PACKAGE%%:install -q -y
 
-    chown -R www-data:www-data ./
-
-    php redaxo/bin/console package:install -q demo_community
-    php redaxo/bin/console -q demo_community:install -y
+    # workaround until R5.10.1 is released.
+    mysql -h$REDAXO_DB_HOST -u$REDAXO_DB_LOGIN -p$REDAXO_DB_PASSWORD -D$REDAXO_DB_NAME -e "UPDATE rex_user SET login_tries = 0;"
 
     chown -R www-data:www-data ./
 

@@ -28,6 +28,12 @@ command -v gsed >/dev/null 2>&1 || {
 declare -A variants=(
     [community]='community'
 )
+declare -A packageNames=(
+    [community]='demo_community'
+)
+declare -A packageVersions=(
+    [community]='3.1.0'
+)
 # -----------------------------------------------------------------------------
 
 # escape special chars to use with sed
@@ -45,8 +51,11 @@ for variant in "${variants[@]}"; do
     # declare tags for current version and variant
     tags=( "${variant}" )
 
+    packagenName="${packageNames[$variant]}"
+    packageVersion="${packageVersions[$variant]}"
+
     # bring out debug infos
-    echo "- Image: $variant"
+    echo "- Image: $variant - $packagenName@$packageVersion"
     echo "  Tags:"
     printf "  - %s\n" ${tags}
 
@@ -58,9 +67,13 @@ for variant in "${variants[@]}"; do
 
 
     cp "templates/Dockerfile" "$dir/Dockerfile"
+    cp "templates/mysql.list" "$dir/mysql.list"
 
     # copy entrypoint file
-    cp "templates/docker-entrypoint.sh" "$dir/docker-entrypoint.sh"
+    gsed -r \
+        -e 's!%%PACKAGE%%!'"$packagenName"'!g' \
+        -e 's!%%VERSION%%!'"$packageVersion"'!g' \
+        "templates/docker-entrypoint.sh" > "$dir/docker-entrypoint.sh"
 
     chmod +x "$dir/docker-entrypoint.sh"
 done
