@@ -7,7 +7,7 @@ set -e
 # https://docs.docker.com/docker-hub/builds/advanced/#custom-build-phase-hooks
 
 
-for tag in %%TAGS%%; do
+for tag in onepage; do
 
     docker tag $IMAGE_NAME $DOCKER_REPO:$tag
     docker push $DOCKER_REPO:$tag

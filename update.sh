@@ -3,9 +3,8 @@ set -euo pipefail
 
 
 # What is this update.sh?
-# It's a helper script you run whenever you've updated the REDAXO version or modified the Docker setup.
-# It generates all the Dockerfiles from templates, the post_push hooks containing image tags, and
-# in updates the travis config.
+# It's a helper script you run whenever you've updated the demo versions or modified the Docker setup.
+# It generates all the Dockerfiles from templates and the post_push hooks containing image tags.
 # Once you commit and push the changes, Docker Hub will trigger automated builds of new images.
 
 # Usage:
@@ -25,21 +24,16 @@ command -v gsed >/dev/null 2>&1 || {
 # configuration ---------------------------------------------------------------
 
 # declare commands and image bases for given variants
-declare -A variants=(
-    [community]='community'
-)
-declare -A packageNames=(
-    [community]='demo_community'
-)
-declare -A packageVersions=(
-    [community]='3.1.1'
-)
-# -----------------------------------------------------------------------------
+variants=( base community onepage )
 
-# escape special chars to use with sed
-sed_escape_rhs() {
-	gsed -e 's/[\/&]/\\&/g; $!a\'$'\n''\\n' <<<"$*" | tr -d '\n'
-}
+# declare package versions
+declare -A packageVersions=(
+    [base]='2.8.0'
+    [community]='3.1.1'
+    [onepage]='1.4.0'
+)
+
+# -----------------------------------------------------------------------------
 
 # loop through image variants
 for variant in "${variants[@]}"; do
@@ -51,11 +45,11 @@ for variant in "${variants[@]}"; do
     # declare tags for current version and variant
     tags=( "${variant}" )
 
-    packagenName="${packageNames[$variant]}"
+    packageName="demo_${variant}"
     packageVersion="${packageVersions[$variant]}"
 
     # bring out debug infos
-    echo "- Image: $variant - $packagenName@$packageVersion"
+    echo "- Image: $variant - $packageName@$packageVersion"
     echo "  Tags:"
     printf "  - %s\n" ${tags}
 
@@ -65,15 +59,14 @@ for variant in "${variants[@]}"; do
         -e 's!%%TAGS%%!'"$tags"'!g' \
         "templates/post_push.sh" > "$dir/hooks/post_push"
 
+    # copy custom-setup file, replace placeholders
+    gsed -r \
+        -e 's!%%PACKAGE%%!'"$packageName"'!g' \
+        -e 's!%%VERSION%%!'"$packageVersion"'!g' \
+        "templates/custom-setup.sh" > "$dir/custom-setup.sh"
+    chmod +x "$dir/custom-setup.sh"
 
+    # copy remaining files
     cp "templates/Dockerfile" "$dir/Dockerfile"
     cp "templates/mysql.list" "$dir/mysql.list"
-
-    # copy entrypoint file
-    gsed -r \
-        -e 's!%%PACKAGE%%!'"$packagenName"'!g' \
-        -e 's!%%VERSION%%!'"$packageVersion"'!g' \
-        "templates/docker-entrypoint.sh" > "$dir/docker-entrypoint.sh"
-
-    chmod +x "$dir/docker-entrypoint.sh"
 done
