@@ -1,4 +1,4 @@
-FROM friendsofredaxo/redaxo:php7.4-apache
+FROM friendsofredaxo/redaxo:5
 
 # needed for workaround until R5.10.1 is released.
 COPY mysql.list /etc/apt/sources.list.d/mysql.list.old
@@ -14,10 +14,7 @@ RUN set -e; \
     apt-mark manual $savedAptMark; \
     rm -rf /var/lib/apt/lists/*
 
-
-# copy and run entrypoint
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
-
-# run CMD
-CMD ["apache2-foreground"]
+# copy custom setup script
+# will be executed within the REDAXO container once the REDAXO setup was finished
+COPY custom-setup.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/custom-setup.sh
