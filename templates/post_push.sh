@@ -6,18 +6,6 @@ set -e
 # It's the template for the post_push hook we use to push all image tags to Docker Hub.
 # https://docs.docker.com/docker-hub/builds/advanced/#custom-build-phase-hooks
 
-# We provide these individual tags:
-
-# X.X.X-phpX.X-apache
-# X.X  -phpX.X-apache
-# X    -phpX.X-apache
-
-# We also provide general tags based on the default PHP version and the default variant:
-
-# X.X.X
-# X.X
-# X
-
 
 for tag in %%TAGS%%; do
 
