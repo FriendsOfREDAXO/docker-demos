@@ -7,7 +7,7 @@ set -e
 # https://docs.docker.com/docker-hub/builds/advanced/#custom-build-phase-hooks
 
 
-for tag in community; do
+for tag in base; do
 
     docker tag $IMAGE_NAME $DOCKER_REPO:$tag
     docker push $DOCKER_REPO:$tag
