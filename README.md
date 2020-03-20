@@ -2,6 +2,7 @@
 
 A collection of website demos made with ❤️ and REDAXO.
 
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/docker-demos/assets/docker-demos_01.jpg)
 
 ## Supported tags
 
