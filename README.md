@@ -31,7 +31,7 @@ But if you would like to use the `onepage` demo instead, just change `friendsofr
 
 ### With [`docker-compose`](https://docs.docker.com/compose/reference/overview/)
 
-Create a `docker-compose.yml` in your project directory with the following code:
+Create a `docker-compose.yml` in your project directory with the following code (Change the code as you need it!):
 
 ```yml
 version: '3'
@@ -71,7 +71,8 @@ volumes:
   redaxo:
   db:
 ```
-After you have created a `docker-compose.yml` file in your project directory, run `docker-compose up -d` in your terminal too download, and start the container.
+In your project directory run `docker-compose up -d` in your terminal too download, and start the container.
+
 With `docker-compose stop` you can stop the container.
 
 ## Recipes
