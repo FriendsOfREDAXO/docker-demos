@@ -25,11 +25,11 @@ A collection of website demos made with ❤️ and REDAXO.
 
 ## Usage
 
-👉 Note that the demos are used 1:1 like the __REDAXO image__, except that you chose a different source: For the code examples we use `friendsofredaxo/demo:base`, which is the base demo.
+👉 Note that the demos are used 1:1 like the __REDAXO image__, except that you chose a different source: For the code examples we use `friendsofredaxo/demo:base`, which is the base demo. But if you would like to use the `onepage` demo instead, just change `friendsofredaxo/demo:base` to `friendsofredaxo/demo:onepage`.
 
 ### With [`docker-compose`](https://docs.docker.com/compose/reference/overview/)
 
-Example for REDAXO base demo container with MySQL container:
+Create a `docker-compose.yml` in your project directory with the following code:
 
 ```yml
 version: '3'
@@ -69,6 +69,8 @@ volumes:
   redaxo:
   db:
 ```
+After you have created a `docker-compose.yml` file in your project directory, run `docker-compose up -d` in your terminal too download, and start the container.
+With `docker-compose stop` you can stop the container.
 
 ## Recipes
 
