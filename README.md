@@ -25,7 +25,9 @@ A collection of website demos made with ❤️ and REDAXO.
 
 ## Usage
 
-👉 Note that the demos are used 1:1 like the __REDAXO image__, except that you chose a different source: For the code examples we use `friendsofredaxo/demo:base`, which is the base demo. But if you would like to use the `onepage` demo instead, just change `friendsofredaxo/demo:base` to `friendsofredaxo/demo:onepage`.
+👉 Note that the demos are used 1:1 like the __REDAXO image__, except that you chose a different source: For the code examples we use `friendsofredaxo/demo:base`, which is the base demo. 
+
+But if you would like to use the `onepage` demo instead, just change `friendsofredaxo/demo:base` to `friendsofredaxo/demo:onepage`.
 
 ### With [`docker-compose`](https://docs.docker.com/compose/reference/overview/)
 
