@@ -14,13 +14,6 @@ set -euo pipefail
 # with associative arrays (hash tables). Check your version with `bash --version`.
 
 
-# check requirements
-command -v gsed >/dev/null 2>&1 || {
-    echo >&2 "GNU sed is required. If you're on Mac OS, use 'brew install gnu-sed' to install.";
-    exit 1;
-}
-
-
 # configuration ---------------------------------------------------------------
 
 # declare commands and image bases for given variants
@@ -55,12 +48,12 @@ for variant in "${variants[@]}"; do
 
     # copy hook from template, replace placeholders
     mkdir -p "$dir/hooks"
-    gsed -r \
+    sed -r \
         -e 's!%%TAGS%%!'"$tags"'!g' \
         "templates/post_push.sh" > "$dir/hooks/post_push"
 
     # copy custom-setup file, replace placeholders
-    gsed -r \
+    sed -r \
         -e 's!%%PACKAGE%%!'"$packageName"'!g' \
         -e 's!%%VERSION%%!'"$packageVersion"'!g' \
         "templates/custom-setup.sh" > "$dir/custom-setup.sh"
@@ -68,5 +61,4 @@ for variant in "${variants[@]}"; do
 
     # copy remaining files
     cp "templates/Dockerfile" "$dir/Dockerfile"
-    cp "templates/mysql.list" "$dir/mysql.list"
 done
