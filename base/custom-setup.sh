@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd /var/www/html
 
-php redaxo/bin/console install:download -q demo_base 2.9.1
+php redaxo/bin/console install:download -q demo_base 2.10.1
 php redaxo/bin/console package:install -q demo_base
 php redaxo/bin/console cache:clear -q
 php redaxo/bin/console demo_base:install -q -y
