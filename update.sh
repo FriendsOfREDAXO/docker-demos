@@ -23,7 +23,7 @@ variants=( base community onepage )
 declare -A packageVersions=(
     [base]='3.0.0'
     [community]='3.3.1'
-    [onepage]='1.5.1'
+    [onepage]='1.6.0'
 )
 
 # -----------------------------------------------------------------------------
