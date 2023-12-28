@@ -14,19 +14,22 @@ Images are published both on [Docker Hub](https://hub.docker.com/r/friendsofreda
 
 * **`base`**  
   This demo aims to primarily help beginners, and it demonstrates just _one_ way how to develop a website with REDAXO.  
-  [https://github.com/FriendsOfREDAXO/demo_base/](https://github.com/FriendsOfREDAXO/demo_base/)
+  [FriendsOfREDAXO/demo_base/](https://github.com/FriendsOfREDAXO/demo_base/)
 * **`onepage`**  
   This demo demonstrates 3 ways how to build a onepage website: with modules, with articles, with categories. _(German)_   
-  [https://github.com/FriendsOfREDAXO/demo_onepage/](https://github.com/FriendsOfREDAXO/demo_onepage/)
+  [FriendsOfREDAXO/demo_onepage/](https://github.com/FriendsOfREDAXO/demo_onepage/)
 * **`community`**  
   In this demo you can see how to use the community addOn to create a website where users can register and login to protected areas. _(German)_  
-  [https://github.com/FriendsOfREDAXO/demo_community/](https://github.com/FriendsOfREDAXO/demo_community/)
+  [FriendsOfREDAXO/demo_community/](https://github.com/FriendsOfREDAXO/demo_community/)
+* **`fullpage`**  
+  Makes use of the fullPage.js script to demonstrate a onepage website. _(German)_  
+  [FriendsOfREDAXO/demo_fullpage/](https://github.com/FriendsOfREDAXO/demo_fullpage/)
 
 
 ## Environment variables
 
 👉 Environment variables correspond 1:1 to those of the __REDAXO image__. Find a complete list here:  
-[https://github.com/FriendsOfREDAXO/docker-redaxo/#environment-variables](https://github.com/FriendsOfREDAXO/docker-redaxo/#environment-variables)
+[FriendsOfREDAXO/docker-redaxo/#environment-variables](https://github.com/FriendsOfREDAXO/docker-redaxo/#environment-variables)
 
 
 ## Usage
