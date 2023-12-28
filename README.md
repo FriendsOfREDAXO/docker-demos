@@ -1,18 +1,24 @@
 # Docker website demo images for REDAXO
 
-A collection of website demos made with ❤️ and REDAXO.
+A collection of website demos for [REDAXO](https://github.com/redaxo/redaxo/) CMS, developed and maintained by [Friends Of REDAXO](https://github.com/FriendsOfREDAXO).
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/docker-demos/assets/docker-demos_01.jpg)
 
+Images are published both on [Docker Hub](https://hub.docker.com/r/friendsofredaxo/demo) and on [GitHub Container Registry](https://github.com/FriendsOfREDAXO/docker-demos/pkgs/container/demo), so you can choose between:
+
+- `friendsofredaxo/demo`
+- `ghcr.io/friendsofredaxo/demo`
+
+
 ## Supported tags
 
-* __`base`__  
+* **`base`**  
   This demo aims to primarily help beginners, and it demonstrates just _one_ way how to develop a website with REDAXO.  
   [https://github.com/FriendsOfREDAXO/demo_base/](https://github.com/FriendsOfREDAXO/demo_base/)
-* __`onepage`__  
+* **`onepage`**  
   This demo demonstrates 3 ways how to build a onepage website: with modules, with articles, with categories. _(German)_   
   [https://github.com/FriendsOfREDAXO/demo_onepage/](https://github.com/FriendsOfREDAXO/demo_onepage/)
-* __`community`__  
+* **`community`**  
   In this demo you can see how to use the community addOn to create a website where users can register and login to protected areas. _(German)_  
   [https://github.com/FriendsOfREDAXO/demo_community/](https://github.com/FriendsOfREDAXO/demo_community/)
 
@@ -29,7 +35,7 @@ A collection of website demos made with ❤️ and REDAXO.
 
 ### With [`docker-compose`](https://docs.docker.com/compose/reference/overview/)
 
-Example for REDAXO base demo container with MySQL container:
+Example for REDAXO base demo container with MariaDB container:
 
 ```yml
 version: '3'
@@ -38,11 +44,11 @@ services:
   redaxo:
     image: friendsofredaxo/demo:base
     ports:
-      - 20080:80
+      - 80:80
     volumes:
       - redaxo:/var/www/html
     environment:
-      REDAXO_SERVER: http://localhost:20080
+      REDAXO_SERVER: http://localhost
       REDAXO_SERVERNAME: 'My Website'
       REDAXO_ERROR_EMAIL: john@doe.example
       REDAXO_LANG: en_gb
@@ -56,7 +62,7 @@ services:
       REDAXO_ADMIN_PASSWORD: 'PunKisNOT!dead'
 
   db:
-    image: mysql:8
+    image: mariadb:10.11
     volumes:
       - db:/var/lib/mysql
     environment:
@@ -72,7 +78,7 @@ volumes:
 
 ## Recipes
 
-🧁 See [recipes](https://github.com/FriendsOfREDAXO/docker-redaxo/tree/master/recipes) section within the REDAXO image repo for further examples!
+🧁 See [recipes](https://github.com/FriendsOfREDAXO/docker-redaxo/tree/main/recipes) section for further examples!
 
 
 ## Need help?
