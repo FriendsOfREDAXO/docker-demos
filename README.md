@@ -2,7 +2,7 @@
 
 A collection of website demos for [REDAXO](https://github.com/redaxo/redaxo/) CMS, developed and maintained by [Friends Of REDAXO](https://github.com/FriendsOfREDAXO).
 
-![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/docker-demos/assets/docker-demos_01.jpg)
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/docker-demos/assets/docker-demos_02.webp)
 
 Images are published both on [Docker Hub](https://hub.docker.com/r/friendsofredaxo/demo) and on [GitHub Container Registry](https://github.com/FriendsOfREDAXO/docker-demos/pkgs/container/demo), so you can choose between:
 
