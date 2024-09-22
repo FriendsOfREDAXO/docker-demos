@@ -4,6 +4,9 @@ import { emptyDirSync, ensureDirSync, copySync } from "@std/fs";
 const sourceDirectory = 'source';
 const imagesDirectory = 'images';
 
+/**
+ * Prepare image configuration
+ */
 const imageConfiguration = parse(Deno.readTextFileSync(`${sourceDirectory}/images.yml`)) as { images: [] };
 
 if (imageConfiguration === null && typeof imageConfiguration !== "object") {
