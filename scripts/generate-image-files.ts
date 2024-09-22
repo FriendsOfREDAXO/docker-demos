@@ -1,23 +1,19 @@
-import { isArray, isObject } from "std/yaml/_utils.ts";
-import { parse, stringify } from "std/yaml/mod.ts";
-import { emptyDirSync, ensureDirSync, copySync } from "std/fs/mod.ts";
+import { parse, stringify } from "@std/yaml";
+import { emptyDirSync, ensureDirSync, copySync } from "@std/fs";
 
 const sourceDirectory = 'source';
 const imagesDirectory = 'images';
 
-/**
- * Prepare image configuration
- */
-const imageConfiguration = parse(Deno.readTextFileSync(`${sourceDirectory}/images.yml`));
+const imageConfiguration = parse(Deno.readTextFileSync(`${sourceDirectory}/images.yml`)) as { images: [] };
 
-if (!isObject(imageConfiguration)) {
+if (imageConfiguration === null && typeof imageConfiguration !== "object") {
   console.error("Invalid image configuration!");
   Deno.exit(1);
 }
 
 const images = imageConfiguration["images"];
 
-if (!isArray(images)) {
+if (!Array.isArray(images)) {
   console.error("Invalid images array!");
   Deno.exit(1);
 }
