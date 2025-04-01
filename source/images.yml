@@ -4,11 +4,11 @@ images:
   - name: "base"
     tags: ["base"]
     package-name: "demo_base"
-    package-version: "3.1.0"
+    package-version: "3.3.2"
   - name: "community"
     tags: ["community"]
     package-name: "demo_community"
-    package-version: "4.1.2"
+    package-version: "4.1.3"
   - name: "onepage"
     tags: ["onepage"]
     package-name: "demo_onepage"
