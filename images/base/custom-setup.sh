@@ -9,3 +9,4 @@ php redaxo/bin/console cache:clear -q
 php redaxo/bin/console demo_base:install -q -y
 
 chown -R www-data:www-data ./
+# Test: Generate mit GITHUB_TOKEN – PR wird nicht gemergt
